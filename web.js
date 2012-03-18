@@ -76,8 +76,8 @@ app.get('/dish/:dish', function(request, response) {
   if (dish) {
     dish.type = 'cookline:dish'
     dish.url = objectUrl('dish', request.params.dish);
-    response.render('object', dish)
     dish.dishes = dishes;
+    response.render('object', dish)
   } else {
     response.send(404);
   }
