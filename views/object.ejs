@@ -36,6 +36,7 @@
       <p><%= description %></p>
       <button id='login'>Login</button>
       <button id='cook' style='display:none'>Cook</button>
+      <button id='logout' style='display:none'>Logout</button>
     </article>
 
 
@@ -45,6 +46,7 @@
 
         var login = document.getElementById('login');
         var cook = document.getElementById('cook');
+        var logout = document.getElementById('logout');
 
         FB.init({
           appId: '294113397324835',
@@ -58,16 +60,22 @@
               login.style.display = 'none';
               cook.style.display = 'block';
               cook.innerHTML = 'Cook, ' + me.first_name + '!';
+              logout.style.display = 'block';
             });
     			} else {
             login.style.display = 'block';
             cook.style.display = 'none';
             cook.innerHTML = 'Cook';
+            logout.style.display = 'none';
     			}
     		});
 
         login.addEventListener('click', function(e) {
           FB.login(function(rsp) {}, {scope:'publish_actions'});
+        });
+
+        logout.addEventListener('click', function(e) {
+          FB.logout();
         });
 
         cook.addEventListener('click', function(e) {
