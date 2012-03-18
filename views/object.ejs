@@ -75,7 +75,7 @@
       <% for (dish in dishes) {
         if (dishes[dish].title != title) {
           %>
-            <a href="<%= objectUrl('dish', dish); %>"><%= dishes[dish].title %></a>
+            <a href="<%= objectUrl('dish', dish) %>"><%= dishes[dish].title %></a>
           <%
         }
       }; %>
