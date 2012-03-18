@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+  <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# cookline: http://ogp.me/ns/fb/cookline#">
+    <meta charset="utf-8">
+    <title><%= title %></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <meta property="fb:app_id"      content="294113397324835" />
+    <meta property="og:type"        content="<%= type %>" />
+    <meta property="og:url"         content="<%= url %>" />
+    <meta property="og:title"       content="<%= title %>" />
+    <meta property="og:description" content="<%= description %>" />
+    <meta property="og:image"       content="<%= image %>" />
+
+    <% if (ingredients) {
+      ingredients.forEach(function(ingredient) {
+        %>
+          <meta property="og:ingredient" content="<%= objectUrl('ingredient', ingredient) %>" />
+        <%
+      });
+    } %>
+
+    <style>
+
+    </style>
+  </head>
+
+  <body>
+
+    <header>
+    </header>
+    <article>
+      <h1><%= title %></h1>
+      <img src='<%=image%>' />
+      <p><%= description %></p>
+    </article>
+
+    <footer>
+
+    </footer>
+  </body>
+</html>
+
+
