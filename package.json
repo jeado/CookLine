@@ -1,0 +1,8 @@
+{
+  "name": "Cookline",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "2.x",
+    "nodemon": "0.6.x"
+  }
+}
