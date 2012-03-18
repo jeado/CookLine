@@ -12,12 +12,14 @@ var dishes = {
   'pizza': {
     'title': 'Pizza',
     'description': 'An oven-baked, flat, round bread typically topped with a tomato sauce, cheese and various toppings.',
-    'image': 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/88/HotPizza.jpg/220px-HotPizza.jpg'
+    'image': 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/88/HotPizza.jpg/220px-HotPizza.jpg',
+    'ingredients': ['beef', 'tomato', 'cheese']
   },
   'beef_curry': {
     'title': 'Beef Curry',
     'description': 'A meat dish featuring the incorporation of complex combinations of spices and herbs.',
-    'image': 'http://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Thai_Village_-_Dinner.jpg/260px-Thai_Village_-_Dinner.jpg'
+    'image': 'http://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Thai_Village_-_Dinner.jpg/260px-Thai_Village_-_Dinner.jpg',
+    'ingredients': ['beef', 'potato']
   }
 };
 
@@ -31,6 +33,21 @@ var ingredients = {
     'title': 'Pasta',
     'description': 'A staple food of traditional Italian cuisine, now of worldwide renown.',
     'image': 'http://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Pasta_2006_5.jpg/120px-Pasta_2006_5.jpg'
+  },
+  'tomato': {
+    'title': 'Tomato',
+    'description': 'A round, red fruit.',
+    'image': 'http://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Bright_red_tomato_and_cross_section02.jpg/250px-Bright_red_tomato_and_cross_section02.jpg'
+  },
+  'cheese': {
+    'title': 'Cheese',
+    'description': 'A generic term for a diverse group of milk-based food products.',
+    'image': 'http://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Cheese_platter.jpg/300px-Cheese_platter.jpg'
+  },
+  'potato': {
+    'title': 'Potato',
+    'description': 'A starchy, tuberous crop.',
+    'image': 'http://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Patates.jpg/220px-Patates.jpg'
   }
 };
 
