@@ -26,6 +26,20 @@
 
     </style>
 
+  </head>
+
+  <body>
+
+    <article>
+      <h1><%= title %></h1>
+      <img src='<%=image%>' />
+      <p><%= description %></p>
+      <button id='login'>Login</button>
+      <button id='cook' style='display:none'>Cook</button>
+    </article>
+
+
+    <div id="fb-root"></div>
     <script>
       window.fbAsyncInit = function() {
 
@@ -73,21 +87,10 @@
       }(document));
 
     </script>
-  </head>
 
-  <body>
 
-    <article>
-      <h1><%= title %></h1>
-      <img src='<%=image%>' />
-      <p><%= description %></p>
-      <button id='login'>Login</button>
-      <button id='cook' style='display:none'>Cook</button>
-    </article>
 
-    <footer>
-    </footer>
-    <div id="fb-root"></div>
+
   </body>
 </html>
 
