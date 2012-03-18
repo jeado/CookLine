@@ -54,6 +54,22 @@
           cookie: true
         });
 
+        login.addEventListener('click', function(e) {
+          FB.login(function(rsp) {}, {scope:'publish_actions'});
+        });
+
+        logout.addEventListener('click', function(e) {
+          FB.logout();
+        });
+
+        cook.addEventListener('click', function(e) {
+    			FB.api('/me/cookline:cook', 'POST', {
+    				"dish": "<%= url %>"
+    			}, function(rsp){
+            alert("Congratulations! You cooked <%= title %>.");
+          });
+        });
+
     		FB.Event.subscribe('auth.statusChange', function(rsp) {
     			if (rsp.authResponse) {
     				FB.api('/me', function(me) {
@@ -69,20 +85,6 @@
             logout.style.display = 'none';
     			}
     		});
-
-        login.addEventListener('click', function(e) {
-          FB.login(function(rsp) {}, {scope:'publish_actions'});
-        });
-
-        logout.addEventListener('click', function(e) {
-          FB.logout();
-        });
-
-        cook.addEventListener('click', function(e) {
-    			FB.api('/me/cookline:cook', 'POST', {
-    				"dish": "<%= url %>"
-    			}, function(rsp){});
-        });
 
       };
 
