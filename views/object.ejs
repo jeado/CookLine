@@ -23,13 +23,61 @@
     } %>
 
     <style>
+      html {
+        background: #fff;
+      }
+      body {
+        background: #e0e0e0;
+        font-family: sans-serif;
+        margin: auto;
+        width:320px;
+        text-align:center;
+        padding-bottom:20px;
+      }
+      nav {
+        background: #000;
+        font-size:18px;
+        padding:8px;
+      }
+      nav a {
+        color:#fff;
+        text-decoration:none;
+        margin:0px 8px;
+      }
+      img {
+        border-radius: 8px;
+        box-shadow:0 2px 8px #666;
+        max-width:260px;
+        max-height:200px;
+      }
+      article {
+        text-shadow:0 1px #fff;
+      }
+      button {
+        background:#777;
+        border-radius: 18px;
+        padding:10px;
+        font-size:18px;
+        border:2px solid #fff;
+        box-shadow:0 2px 8px #666;
+        color:#fff;
+        text-shadow:0 1px #333;
+      }
 
     </style>
 
   </head>
 
   <body>
-
+    <nav>
+      <% for (dish in dishes) {
+        if (dishes[dish].title != title) {
+          %>
+            <a href="<%= objectUrl('dish', dish) %>"><%= dishes[dish].title %></a>
+          <%
+        }
+      }; %>
+    </nav>
     <article>
       <h1><%= title %></h1>
       <img src='<%=image%>' />
@@ -54,17 +102,17 @@
           cookie: true
         });
 
-        login.addEventListener('click', function(e) {
+        login.addEventListener('click', function() {
           FB.login(function(rsp) {
             console.log(rsp);
           }, {scope:'publish_actions'});
         });
 
-        logout.addEventListener('click', function(e) {
+        logout.addEventListener('click', function() {
           FB.logout();
         });
 
-        cook.addEventListener('click', function(e) {
+        cook.addEventListener('click', function() {
     			FB.api('/me/cookline:cook', 'POST', {
     				"dish": "<%= url %>"
     			}, function(rsp){
@@ -99,7 +147,9 @@
         js.src = "//connect.facebook.net/en_US/all.js";
         ref.parentNode.insertBefore(js, ref);
       }(document));
-
+      window.addEventListener('load', function() {
+        setTimeout(function() { window.scrollTo(0, 1) }, 100);
+      });
     </script>
 
 

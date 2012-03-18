@@ -77,6 +77,7 @@ app.get('/dish/:dish', function(request, response) {
     dish.type = 'cookline:dish'
     dish.url = objectUrl('dish', request.params.dish);
     response.render('object', dish)
+    dish.dishes = dishes;
   } else {
     response.send(404);
   }
@@ -88,6 +89,7 @@ app.get('/ingredient/:ingredient', function(request, response) {
     ingredient.type = 'cookline:ingredient'
     ingredient.url = objectUrl('ingredient', request.params.ingredient);
     ingredient.ingredients = null;
+    ingredient.dishes = dishes;
     response.render('object', ingredient)
   } else {
     response.send(404);
