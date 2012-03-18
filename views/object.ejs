@@ -70,15 +70,17 @@
   </head>
 
   <body>
+
     <nav>
       <% for (dish in dishes) {
         if (dishes[dish].title != title) {
           %>
-            <a href="<%= objectUrl('dish', dish) %>"><%= dishes[dish].title %></a>
+            <a href="<%= objectUrl('dish', dish); %>"><%= dishes[dish].title %></a>
           <%
         }
       }; %>
     </nav>
+
     <article>
       <h1><%= title %></h1>
       <img src='<%=image%>' />
@@ -87,74 +89,6 @@
       <button id='cook'>Cook</button>
       <button id='logout'>Logout</button>
     </article>
-
-
-    <div id="fb-root"></div>
-    <script>
-      window.fbAsyncInit = function() {
-
-        var login = document.getElementById('login');
-        var cook = document.getElementById('cook');
-        var logout = document.getElementById('logout');
-
-        FB.init({
-          appId: '294113397324835',
-          status: true,
-          cookie: true
-        });
-
-        login.addEventListener('click', function() {
-          FB.login(function(rsp) {
-            console.log(rsp);
-          }, {scope:'publish_actions'});
-        });
-
-        logout.addEventListener('click', function() {
-          FB.logout();
-        });
-
-        cook.addEventListener('click', function() {
-    			FB.api('/me/cookline:cook', 'POST', {
-    				"dish": "<%= url %>"
-    			}, function(rsp){
-            console.log(rsp);
-            alert("Congratulations! You cooked <%= title %>.");
-          });
-        });
-
-    		FB.Event.subscribe('auth.statusChange', function(rsp) {
-          console.log(rsp);
-    			if (rsp.authResponse) {
-    				FB.api('/me', function(me) {
-              login.style.display = 'none';
-              cook.style.display = 'inline';
-              cook.innerHTML = 'Cook, ' + me.first_name + '!';
-              logout.style.display = 'inline';
-            });
-    			} else {
-            login.style.display = 'inline';
-            cook.style.display = 'none';
-            cook.innerHTML = 'Cook';
-            logout.style.display = 'none';
-    			}
-    		});
-
-      };
-
-      (function(d){
-        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement('script'); js.id = id; js.async = true;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        ref.parentNode.insertBefore(js, ref);
-      }(document));
-      window.addEventListener('load', function() {
-        setTimeout(function() { window.scrollTo(0, 1) }, 100);
-      });
-    </script>
-
-
-
 
   </body>
 </html>

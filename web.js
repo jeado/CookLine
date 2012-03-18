@@ -66,7 +66,6 @@ app.configure(function(){
   });
 });
 
-
 app.get('/', function(request, response) {
   response.send('Welcome to CookLine!');
 });
@@ -95,8 +94,6 @@ app.get('/ingredient/:ingredient', function(request, response) {
     response.send(404);
   }
 });
-
-
 
 var port = process.env.PORT || 3000;
 app.listen(port, function() {
