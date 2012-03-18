@@ -29,6 +29,9 @@
     <script>
       window.fbAsyncInit = function() {
 
+        var login = document.getElementById('login');
+        var cook = document.getElementById('cook');
+
         FB.init({
           appId: '294113397324835',
           status: true,
@@ -36,50 +39,28 @@
         });
 
     		FB.Event.subscribe('auth.statusChange', function(rsp) {
-    			console.log(rsp)
-    //			if (rsp.authResponse) {
-    //				FB.api('/me', function(me){
-    //					console.log(me)
-    //					document.getElementById('fb-username').innerHTML = me.name;
-    //					document.getElementById('fb-login-button').style.display = 'none';
-    //					document.getElementById('fb-loggedin').style.display = 'block';
-    //				});
-    //        // get the permissions the user's already granted, we'll need them later
-    //				FB.api('/me/permissions', function(response){
-    //          if (response) {
-    //  					console.log(response.data[0]);
-    //            permissions = response.data[0];
-    //          }
-    //				})
-    //			} else {
-    //				document.getElementById('fb-login-button').style.display = 'block';
-    //				document.getElementById('fb-loggedin').style.display = 'none';
-    //
-    //			}
+    			if (rsp.authResponse) {
+    				FB.api('/me', function(me) {
+              login.style.display = 'none';
+              cook.style.display = 'block';
+              cook.innerHTML = 'Cook, ' + me.first_name + '!';
+            });
+    			} else {
+            login.style.display = 'block';
+            cook.style.display = 'none';
+            cook.innerHTML = 'Cook';
+    			}
     		});
 
-    		// Cook Action
-    //		document.getElementById('button').addEventListener('click', function(e){
-    //        FB.login(function(rsp){
-    //  				FB.api('/me/permissions', function(response){
-    //  					console.log(response.data[0]);
-    //            permissions = response.data[0];
-    //  				})
-    //          // Could re-attempt to publish here, but won't for simplicity
-    //        },{scope:'publish_actions'})
-    //
-    //      } else {
-    //        // all good, let try and publish an action using the og:url tag as the object URL
-    //  			FB.api('/me/simonsfoodapp:cook', 'POST', {
-    //  				"recipe": document.getElementById('og-url').getAttribute('content')
-    //  			}, function(rsp){
-    //          console.log(rsp)
-    //  				if (rsp.id) {
-    //  				  alert('action published with ID: ' + rsp.id)
-    //  				}
-    //  			})
-    //      }
-    //		})
+        login.addEventListener('click', function(e) {
+          FB.login(function(rsp) {}, {scope:'publish_actions'});
+        });
+
+        cook.addEventListener('click', function(e) {
+    			FB.api('/me/cookline:cook', 'POST', {
+    				"dish": "<%= url %>"
+    			}, function(rsp){});
+        });
 
       };
 
@@ -100,7 +81,8 @@
       <h1><%= title %></h1>
       <img src='<%=image%>' />
       <p><%= description %></p>
-      <button id='button'>-</button>
+      <button id='login'>Login</button>
+      <button id='cook' style='display:none'>Cook</button>
     </article>
 
     <footer>
