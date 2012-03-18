@@ -55,7 +55,9 @@
         });
 
         login.addEventListener('click', function(e) {
-          FB.login(function(rsp) {}, {scope:'publish_actions'});
+          FB.login(function(rsp) {
+            console.log(rsp);
+          }, {scope:'publish_actions'});
         });
 
         logout.addEventListener('click', function(e) {
@@ -66,11 +68,13 @@
     			FB.api('/me/cookline:cook', 'POST', {
     				"dish": "<%= url %>"
     			}, function(rsp){
+            console.log(rsp);
             alert("Congratulations! You cooked <%= title %>.");
           });
         });
 
     		FB.Event.subscribe('auth.statusChange', function(rsp) {
+          console.log(rsp);
     			if (rsp.authResponse) {
     				FB.api('/me', function(me) {
               login.style.display = 'none';
