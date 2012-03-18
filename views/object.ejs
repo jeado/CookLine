@@ -62,6 +62,7 @@
         box-shadow:0 2px 8px #666;
         color:#fff;
         text-shadow:0 1px #333;
+        display:none;
       }
 
     </style>
@@ -83,8 +84,8 @@
       <img src='<%=image%>' />
       <p><%= description %></p>
       <button id='login'>Login</button>
-      <button id='cook' style='display:none'>Cook</button>
-      <button id='logout' style='display:none'>Logout</button>
+      <button id='cook'>Cook</button>
+      <button id='logout'>Logout</button>
     </article>
 
 
@@ -126,12 +127,12 @@
     			if (rsp.authResponse) {
     				FB.api('/me', function(me) {
               login.style.display = 'none';
-              cook.style.display = 'block';
+              cook.style.display = 'inline';
               cook.innerHTML = 'Cook, ' + me.first_name + '!';
-              logout.style.display = 'block';
+              logout.style.display = 'inline';
             });
     			} else {
-            login.style.display = 'block';
+            login.style.display = 'inline';
             cook.style.display = 'none';
             cook.innerHTML = 'Cook';
             logout.style.display = 'none';
