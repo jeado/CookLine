@@ -95,27 +95,27 @@ app.get('/', function(request, response) {
 });
 
 app.get('/dish/:dish', function(request, response) {
-  var dish = dishes[request.params.dish];
-  if (dish) {
-    dish.type = 'cookline:dish'
-    dish.url = objectUrl('dish', request.params.dish);
-    dish.dishes = dishes;
-    dish.appid = appid;
-    response.render('object', dish)
+  var data = dishes[request.params.dish];
+  if (data) {
+    data.type = 'cookline:dish'
+    data.url = objectUrl('dish', request.params.dish);
+    data.dishes = dishes;
+    data.appid = appid;
+    response.render('object', data)
   } else {
     response.send(404);
   }
 });
 
 app.get('/ingredient/:ingredient', function(request, response) {
-  var ingredient = ingredients[request.params.ingredient];
-  if (ingredient) {
-    ingredient.type = 'cookline:ingredient'
-    ingredient.url = objectUrl('ingredient', request.params.ingredient);
-    ingredient.ingredients = null;
-    ingredient.dishes = dishes;
-    dish.appid = appid;
-    response.render('object', ingredient)
+  var data = ingredients[request.params.ingredient];
+  if (data) {
+    data.type = 'cookline:ingredient'
+    data.url = objectUrl('ingredient', request.params.ingredient);
+    data.ingredients = null;
+    data.dishes = dishes;
+    data.appid = appid;
+    response.render('object', data)
   } else {
     response.send(404);
   }
