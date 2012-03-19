@@ -32,7 +32,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <meta property="fb:app_id"      content="<%= appid %>" />
+    <meta property="fb:app_id"      content="<%= app_id %>" />
     <meta property="og:type"        content="<%= type %>" />
     <meta property="og:url"         content="<%= url %>" />
     <meta property="og:title"       content="<%= title %>" />
@@ -132,7 +132,7 @@
         var logout = document.getElementById('logout');
 
         FB.init({
-          appId: '<%= appid %>',
+          appId: '<%= app_id %>',
           status: true,
           cookie: true
         });

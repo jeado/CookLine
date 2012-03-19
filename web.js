@@ -20,11 +20,14 @@
 * DEALINGS IN THE SOFTWARE.
 */
 
+// make sure these settings are in the environment (e.g. in foreman's .env file)
+var app_id = process.env.APP_ID,
+    app_domain = process.env.APP_DOMAIN,
+    app_ns = process.env.APP_NS;
+
 var express = require('express');
 
 var app = express.createServer(express.logger());
-
-var appid = 294113397324835;
 
 var dishes = {
   'lasagne': {
@@ -76,7 +79,7 @@ var ingredients = {
 };
 
 var objectUrl = function (type, object) {
-  return 'https://cookline.herokuapp.com/' + type + '/' + object
+  return app_domain + '/' + type + '/' + object
 }
 
 app.configure(function(){
@@ -91,16 +94,16 @@ app.configure(function(){
 });
 
 app.get('/', function(request, response) {
-  response.send('Welcome to CookLine!');
+  response.send('Welcome to the cooking app!');
 });
 
 app.get('/dish/:dish', function(request, response) {
   var data = dishes[request.params.dish];
   if (data) {
-    data.type = 'cookline:dish'
+    data.type = app_ns + ':dish'
     data.url = objectUrl('dish', request.params.dish);
     data.dishes = dishes;
-    data.appid = appid;
+    data.app_id = app_id;
     response.render('object', data)
   } else {
     response.send(404);
@@ -110,11 +113,11 @@ app.get('/dish/:dish', function(request, response) {
 app.get('/ingredient/:ingredient', function(request, response) {
   var data = ingredients[request.params.ingredient];
   if (data) {
-    data.type = 'cookline:ingredient'
+    data.type = app_ns + ':ingredient'
     data.url = objectUrl('ingredient', request.params.ingredient);
     data.ingredients = null;
     data.dishes = dishes;
-    data.appid = appid;
+    data.app_id = app_id;
     response.render('object', data)
   } else {
     response.send(404);
