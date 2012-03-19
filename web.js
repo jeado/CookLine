@@ -1,6 +1,30 @@
+/**
+* Copyright 2012 Facebook, Inc.
+*
+* You are hereby granted a non-exclusive, worldwide, royalty-free license to
+* use, copy, modify, and distribute this software in source code or binary
+* form for use in connection with the web services and APIs provided by
+* Facebook.
+*
+* As with any software that integrates with the Facebook platform, your use
+* of this software is subject to the Facebook Developer Principles and
+* Policies [http://developers.facebook.com/policy/]. This copyright notice
+* shall be included in all copies or substantial portions of the software.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+* THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+* FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+* DEALINGS IN THE SOFTWARE.
+*/
+
 var express = require('express');
 
 var app = express.createServer(express.logger());
+
+var appid = 294113397324835;
 
 var dishes = {
   'lasagne': {
@@ -76,6 +100,7 @@ app.get('/dish/:dish', function(request, response) {
     dish.type = 'cookline:dish'
     dish.url = objectUrl('dish', request.params.dish);
     dish.dishes = dishes;
+    dish.appid = appid;
     response.render('object', dish)
   } else {
     response.send(404);
@@ -89,6 +114,7 @@ app.get('/ingredient/:ingredient', function(request, response) {
     ingredient.url = objectUrl('ingredient', request.params.ingredient);
     ingredient.ingredients = null;
     ingredient.dishes = dishes;
+    dish.appid = appid;
     response.render('object', ingredient)
   } else {
     response.send(404);
