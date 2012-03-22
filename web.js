@@ -104,6 +104,7 @@ app.get('/dish/:dish', function(request, response) {
     data.url = objectUrl('dish', request.params.dish);
     data.dishes = dishes;
     data.app_id = app_id;
+    data.locale = request.header('x-facebook-locale');
     console.log(request.headers);
     response.render('object', data)
   } else {
@@ -119,6 +120,7 @@ app.get('/ingredient/:ingredient', function(request, response) {
     data.ingredients = null;
     data.dishes = dishes;
     data.app_id = app_id;
+    data.locale = request.header('x-facebook-locale');
     response.render('object', data)
   } else {
     response.send(404);
