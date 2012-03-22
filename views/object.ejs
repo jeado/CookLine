@@ -47,7 +47,7 @@
     <% if (ingredients) {
       ingredients.forEach(function(ingredient) {
         %>
-          <meta property="og:ingredient" content="<%= objectUrl('ingredient', ingredient) %>" />
+          <meta property="cookline:ingredients" content="<%= objectUrl('ingredient', ingredient) %>" />
         <%
       });
     } %>
