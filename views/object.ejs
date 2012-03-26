@@ -35,15 +35,9 @@
     <meta property="fb:app_id"      content="<%= app_id %>" />
     <meta property="og:type"        content="<%= type %>" />
     <meta property="og:url"         content="<%= url %>" />
-    <meta property="og:title"       content="<%= title %> (<%= locale %>)" />
+    <meta property="og:title"       content="<%= title %>" />
     <meta property="og:description" content="<%= description %>" />
     <meta property="og:image"       content="<%= image %>" />
-
-    <meta property="og:locale" content="<%= locale %>" />
-    <meta property="og:locale:alternate" content="en_US" />
-    <meta property="og:locale:alternate" content="fr_FR" />
-    <meta property="og:locale:alternate" content="zh_TW" />
-    <meta property="og:locale:alternate" content="es_ES" />
 
     <% if (ingredients) {
       ingredients.forEach(function(ingredient) {
