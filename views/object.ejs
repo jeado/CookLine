@@ -140,7 +140,7 @@
         login.addEventListener('click', function() {
           FB.login(function(rsp) {
             console.log(rsp);
-          }, {scope:'publish_actions'});
+          }, {scope:'publish_actions,user_actions.like'});
         });
 
         logout.addEventListener('click', function() {
